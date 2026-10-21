@@ -14,21 +14,34 @@ install-scoped-admin-guard.sh
 - Dijalankan sebagai **root** di VPS panel
 - PHP 8.3 FPM + MariaDB (sesuai instalasi Reviactyl standar)
 
-## Cara pakai
+## Cara Install — Pilih 2 Model
+
+### Model 1 — Bash (1 perintah, langsung jalan dari GitHub)
+
+Tidak perlu download apa pun. Jalankan di VPS panel sebagai root:
 
 ```bash
-sudo bash install-scoped-admin-guard.sh
+bash <(curl -fsSL https://raw.githubusercontent.com/Lngtmi/protect-reviactyl/main/install-scoped-admin-guard.sh)
 ```
 
 Dengan teks halaman & owner kustom:
 
 ```bash
-sudo OWNER_ID=1 \
-  GUARD_TITLE='AKSES DIBATASI' \
-  GUARD_OWNER_MESSAGE='Menu ini hanya dapat diakses Owner.' \
-  GUARD_SERVER_MESSAGE='Server ini bukan milik Anda.' \
-  bash install-scoped-admin-guard.sh
+OWNER_ID=1 GUARD_TITLE='AKSES DIBATASI' GUARD_OWNER_MESSAGE='Menu ini hanya dapat diakses Owner.' \
+  bash <(curl -fsSL https://raw.githubusercontent.com/Lngtmi/protect-reviactyl/main/install-scoped-admin-guard.sh)
 ```
+
+### Model 2 — Source Code (download / clone dulu)
+
+```bash
+git clone https://github.com/Lngtmi/protect-reviactyl.git
+cd protect-reviactyl
+sudo bash install-scoped-admin-guard.sh
+```
+
+Atau unduh ZIP dari tombol **Code → Download ZIP** di halaman repo ini, ekstrak, lalu jalankan `sudo bash install-scoped-admin-guard.sh`.
+
+### Variabel
 
 | Variable | Default | Keterangan |
 | --- | --- | --- |
