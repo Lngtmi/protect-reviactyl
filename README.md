@@ -46,5 +46,9 @@ sudo OWNER_ID=1 \
 - Script berhenti dengan error jelas bila panel tidak ditemukan, owner tidak ada di database, atau teks melebihi batas — sebelum mengubah apa pun.
 - Script ini **tidak** menambah akses sudo untuk web server dan tidak mengubah database, Wings/Agent, atau data server.
 
+## Kontak
+
+Ada pertanyaan atau butuh bantuan? Hubungi saya di Telegram: [@pratamanie](https://t.me/pratamanie)
+
 ---
 SOURCE CODE BY PRATAMA
