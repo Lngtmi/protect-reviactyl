@@ -55,23 +55,9 @@ Atau unduh ZIP dari tombol **Code → Download ZIP** di halaman repo ini, ekstra
 | `GUARD_404_TITLE` | mengikuti `GUARD_TITLE` | Judul halaman 404 (maks 80 karakter) |
 | `GUARD_404_BUTTON` | `Kembali ke Dashboard` | Teks tombol 404 (maks 80 karakter) |
 
-## Cara Uninstall (melepas Guard / Protect)
+## Cara Uninstall
 
-Pakai script pendamping `uninstall-all-protect.sh` — memulihkan file panel dari backup dan mencabut Guard Manager beserta sudoers-nya. Panel, database, Wings/Agent, dan data server **tidak** dihapus.
-
-### Model 1 — Bash (1 perintah)
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Lngtmi/protect-reviactyl/main/uninstall-all-protect.sh)
-```
-
-### Model 2 — Source Code
-
-```bash
-sudo bash uninstall-all-protect.sh
-```
-
-> Sesuai namanya, script ini melepas **semua** protect yang terdeteksi di VPS: Guard Reviactyl (repo ini) dan juga Protect Pterodactyl bila ada di VPS yang sama. Bila tidak ada protect yang terdeteksi, script berhenti tanpa mengubah apa pun.
+Guard dari repo ini dilepas memakai script terpisah: **[uninstall-all-protect](https://github.com/Lngtmi/uninstall-all-protect)** — panel dan data server tetap utuh, hanya protect/guard-nya yang dicabut.
 
 ## Cara kerja Guard Manager
 
