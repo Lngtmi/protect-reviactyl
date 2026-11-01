@@ -1,6 +1,8 @@
 # Protect Reviactyl — Scoped Admin Guard
 
-Script protect untuk **Reviactyl Panel**: membatasi admin selain owner hanya bisa mengakses server miliknya sendiri, lengkap dengan halaman 403/404 khusus yang teksnya bisa diatur.
+Script protect untuk **Reviactyl Panel**: membatasi admin selain owner hanya bisa mengakses server miliknya sendiri dan memblokir menu-menu admin khusus owner (Nodes, Locations, Databases, Settings, API, Nests, Users, Roles, Alerts, Webhooks, Activity Log, Designify, Monitoring, Software Updates, dll), lengkap dengan halaman 403/404 khusus yang teksnya bisa diatur.
+
+Versi ini juga memasang **Guard Manager**: halaman khusus Owner di panel (menu sidebar) untuk mengubah teks Guard, lalu menerapkan (**Simpan**) atau melepas (**Lepas Guard**) proteksi langsung dari web — tanpa perlu menjalankan script lagi.
 
 Satu file, dijalankan langsung di VPS tempat panel Reviactyl terinstall:
 
@@ -53,11 +55,18 @@ Atau unduh ZIP dari tombol **Code → Download ZIP** di halaman repo ini, ekstra
 | `GUARD_404_TITLE` | mengikuti `GUARD_TITLE` | Judul halaman 404 (maks 80 karakter) |
 | `GUARD_404_BUTTON` | `Kembali ke Dashboard` | Teks tombol 404 (maks 80 karakter) |
 
+## Cara kerja Guard Manager
+
+- Semua nilai Guard disimpan di satu file config panel: `storage/app/guard-config.json` — halaman web dan script membaca sumber yang sama.
+- Halaman Guard Manager hanya muncul untuk **Owner** (user ID sesuai `OWNER_ID`).
+- Tombol di halaman web menjalankan script apply/remove resmi di `storage/app/guard-scripts/` melalui sudo yang **dibatasi hanya untuk script-script tersebut** (`/etc/sudoers.d/reviactyl-guard`) — bukan akses root bebas untuk web server.
+- Status Terinstall / Belum Terinstall dibaca dari marker Guard di file middleware panel yang aktif.
+
 ## Keamanan
 
-- Semua file yang diubah **dibackup dulu** ke `/root/reviactyl-scoped-guard-<tanggal-jam>/` di VPS.
+- Semua file yang diubah **dibackup dulu** secara scoped (`.bak-scoped`) sebelum Guard diterapkan; melepas Guard memulihkan file asli dari backup tersebut.
 - Script berhenti dengan error jelas bila panel tidak ditemukan, owner tidak ada di database, atau teks melebihi batas — sebelum mengubah apa pun.
-- Script ini **tidak** menambah akses sudo untuk web server dan tidak mengubah database, Wings/Agent, atau data server.
+- Script ini tidak mengubah database panel, Wings/Agent, atau data server.
 
 ## Kontak
 
