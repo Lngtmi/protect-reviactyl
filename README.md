@@ -16,44 +16,15 @@ install-scoped-admin-guard.sh
 - Dijalankan sebagai **root** di VPS panel
 - PHP 8.3 FPM + MariaDB (sesuai instalasi Reviactyl standar)
 
-## Cara Install — Pilih 2 Model
+## Cara Install — Bash (1 perintah)
 
-### Model 1 — Bash (1 perintah, langsung jalan dari GitHub)
-
-Tidak perlu download apa pun. Jalankan di VPS panel sebagai root:
+Ini satu-satunya cara install yang disarankan. Tidak perlu download apa pun — jalankan di VPS panel sebagai root:
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/Lngtmi/protect-reviactyl/main/install-scoped-admin-guard.sh)
 ```
 
-Dengan teks halaman & owner kustom:
-
-```bash
-OWNER_ID=1 GUARD_TITLE='AKSES DIBATASI' GUARD_OWNER_MESSAGE='Menu ini hanya dapat diakses Owner.' \
-  bash <(curl -fsSL https://raw.githubusercontent.com/Lngtmi/protect-reviactyl/main/install-scoped-admin-guard.sh)
-```
-
-### Model 2 — Source Code (download / clone dulu)
-
-```bash
-git clone https://github.com/Lngtmi/protect-reviactyl.git
-cd protect-reviactyl
-sudo bash install-scoped-admin-guard.sh
-```
-
-Atau unduh ZIP dari tombol **Code → Download ZIP** di halaman repo ini, ekstrak, lalu jalankan `sudo bash install-scoped-admin-guard.sh`.
-
-### Variabel
-
-| Variable | Default | Keterangan |
-| --- | --- | --- |
-| `OWNER_ID` | `1` | ID user owner di panel |
-| `GUARD_TITLE` | `AKSES DIBATASI` | Judul halaman 403 (maks 80 karakter) |
-| `GUARD_OWNER_MESSAGE` | `Menu ini hanya dapat diakses Owner.` | Pesan 403 (maks 240 karakter) |
-| `GUARD_SERVER_MESSAGE` | `Server ini bukan milik Anda.` | Pesan server bukan milik user (maks 240 karakter) |
-| `GUARD_403_BUTTON` | `Kembali ke Dashboard` | Teks tombol 403 (maks 80 karakter) |
-| `GUARD_404_TITLE` | mengikuti `GUARD_TITLE` | Judul halaman 404 (maks 80 karakter) |
-| `GUARD_404_BUTTON` | `Kembali ke Dashboard` | Teks tombol 404 (maks 80 karakter) |
+Script langsung berjalan dan memasang Guard + Guard Manager. Secara bawaan **Owner adalah user dengan ID 1** di panel, dan teks halaman blokir memakai teks standar Guard — keduanya bisa diubah belakangan dari halaman Guard Manager di panel.
 
 ## Cara Uninstall
 
